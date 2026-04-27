@@ -1,9 +1,28 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import styles from '../styles/Header.module.css';
 
 function Header({ theme, onToggleTheme }) {
   const { user, logout } = useAuth();
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  function toggleMenu() {
+    setIsMenuOpen((current) => !current);
+  }
+
+  function closeMenu() {
+    setIsMenuOpen(false);
+  }
+
+  function getNavLinkClass(isActive) {
+    return `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`;
+  }
 
   return (
     <header className={styles.header}>
@@ -22,37 +41,43 @@ function Header({ theme, onToggleTheme }) {
       <nav className={styles.nav}>
         <NavLink
           to="/"
-          className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+          className={({ isActive }) => getNavLinkClass(isActive)}
+          onClick={closeMenu}
         >
           Início
         </NavLink>
         <NavLink
           to="/busca"
-          className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+          className={({ isActive }) => getNavLinkClass(isActive)}
+          onClick={closeMenu}
         >
           Busca
         </NavLink>
         <NavLink
           to="/tendencias"
-          className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+          className={({ isActive }) => getNavLinkClass(isActive)}
+          onClick={closeMenu}
         >
           Tendências
         </NavLink>
         <NavLink
           to="/temporadas"
-          className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+          className={({ isActive }) => getNavLinkClass(isActive)}
+          onClick={closeMenu}
         >
           Temporadas
         </NavLink>
         <NavLink
           to="/favoritos"
-          className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+          className={({ isActive }) => getNavLinkClass(isActive)}
+          onClick={closeMenu}
         >
           Favoritos
         </NavLink>
         <NavLink
           to="/download"
-          className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+          className={({ isActive }) => getNavLinkClass(isActive)}
+          onClick={closeMenu}
         >
           Download
         </NavLink>
@@ -88,7 +113,31 @@ function Header({ theme, onToggleTheme }) {
             Entrar
           </Link>
         )}
+
+        <button
+          type="button"
+          className={styles.menuToggle}
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Fechar menu de navegacao' : 'Abrir menu de navegacao'}
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+        >
+          <span className={styles.menuIcon} aria-hidden="true">{isMenuOpen ? '✕' : '☰'}</span>
+          <span>{isMenuOpen ? 'Fechar' : 'Menu'}</span>
+        </button>
       </div>
+
+      <nav
+        id="primary-navigation"
+        className={`${styles.mobileNav} ${isMenuOpen ? styles.mobileNavOpen : ''}`}
+      >
+        <NavLink to="/" className={({ isActive }) => getNavLinkClass(isActive)} onClick={closeMenu}>Início</NavLink>
+        <NavLink to="/busca" className={({ isActive }) => getNavLinkClass(isActive)} onClick={closeMenu}>Busca</NavLink>
+        <NavLink to="/tendencias" className={({ isActive }) => getNavLinkClass(isActive)} onClick={closeMenu}>Tendências</NavLink>
+        <NavLink to="/temporadas" className={({ isActive }) => getNavLinkClass(isActive)} onClick={closeMenu}>Temporadas</NavLink>
+        <NavLink to="/favoritos" className={({ isActive }) => getNavLinkClass(isActive)} onClick={closeMenu}>Favoritos</NavLink>
+        <NavLink to="/download" className={({ isActive }) => getNavLinkClass(isActive)} onClick={closeMenu}>Download</NavLink>
+      </nav>
     </header>
   );
 }

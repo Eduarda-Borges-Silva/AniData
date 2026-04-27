@@ -66,6 +66,10 @@
   gap: 10px;
 }
 
+.mobileNav {
+  display: none;
+}
+
 .navLink {
   padding: 10px 14px;
   border: 1px solid var(--line-soft);
@@ -175,6 +179,30 @@
   box-shadow: 0 8px 22px rgba(143, 29, 37, 0.28);
 }
 
+.menuToggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  background: var(--surface-3);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.menuToggle:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+.menuIcon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 @media (max-width: 900px) {
   .header {
     position: static;
@@ -185,24 +213,34 @@
 
   .controls {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-wrap: wrap;
   }
 
   .nav {
-    width: 100%;
+    display: none;
   }
 
-  .themeToggle {
-    align-self: flex-end;
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  .mobileNav {
+    width: 100%;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 12px;
+    gap: 8px;
+  }
+
+  .mobileNavOpen {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
-  .nav {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+  .mobileNavOpen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .navLink {
@@ -246,10 +284,6 @@
 
   .brandLink {
     font-size: 1.25rem;
-  }
-
-  .nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .userArea {
