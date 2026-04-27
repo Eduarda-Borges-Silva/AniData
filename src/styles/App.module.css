@@ -1,0 +1,24 @@
+.appShell {
+  min-height: 100vh;
+  width: min(1280px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 18px 0 32px;
+}
+
+.mainContent {
+  min-width: 0;
+  padding: 28px 0 48px;
+}
+
+@media (max-width: 900px) {
+  .appShell {
+    width: min(100% - 24px, 1280px);
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainContent {
+    padding-top: 24px;
+  }
+}

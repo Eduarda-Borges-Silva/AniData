@@ -1,0 +1,25 @@
+{
+  "name": "anidata",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "homepage": "https://dudaborges0604.github.io/AniData",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "firebase": "^12.12.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "gh-pages": "^6.3.0",
+    "vite": "^5.4.19"
+  }
+}
