@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import styles from '../styles/Login.module.css';
 
 function Login() {
-  const { loginWithGoogle, isFirebaseConfigured } = useAuth();
+  const { user, loginWithGoogle, isFirebaseConfigured } = useAuth();
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/', { replace: true });
+    }
+  }, [user, navigate]);
 
   async function handleLogin() {
     setError('');
     try {
       await loginWithGoogle();
+      navigate('/', { replace: true });
     } catch (err) {
       setError(err?.message || 'Não foi possível entrar com Google.');
     }
