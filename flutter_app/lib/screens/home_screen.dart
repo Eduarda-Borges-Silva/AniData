@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: BoxDecoration(
               color: const Color(0xFF2a1020),
               borderRadius: BorderRadius.circular(6),
-              border: Border.all(color: const Color(0xFFe63946).withOpacity(0.3)),
+              border: Border.all(color: const Color(0xFFe63946).withValues(alpha: 0.3)),
             ),
             child: const Text(
               'Descubra seu próximo favorito',

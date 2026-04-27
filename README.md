@@ -111,7 +111,7 @@ flowchart TD
 
 ```bash
 # 1. Clonar o repositório
-git clone https://github.com/SEU_USUARIO/AniData.git
+git clone https://github.com/Eduarda-Borges-Silva/AniData.git
 cd AniData
 
 # 2. Instalar dependências
@@ -134,11 +134,19 @@ npm run build
 # Saída na pasta dist/
 ```
 
-**Deploy (exemplo com Vercel):**
+**Deploy com Netlify:**
 
 ```bash
-npm install -g vercel
-vercel --prod
+# Opção 1: CLI do Netlify
+npm install -g netlify-cli
+netlify deploy --prod --dir=dist
+
+# Opção 2: Conectar repositório GitHub no Netlify
+# 1. Acesse https://netlify.com
+# 2. Clique em "New site from Git"
+# 3. Selecione o repositório AniData
+# 4. Build command: npm run build
+# 5. Publish directory: dist
 ```
 
 ### Prints Web
@@ -155,9 +163,9 @@ vercel --prod
 
 ### Acesso Online
 
-🌐 **[https://anidata.vercel.app](https://anidata.vercel.app)**
+🌐 **[Netlify — seu-site.netlify.app](https://seu-site.netlify.app)**
 
-> ⚠️ *Substitua pelo link real após o deploy*
+> ⚠️ *Atualize com o link real após o deploy no Netlify*
 
 ---
 
@@ -297,7 +305,7 @@ flutter devices
 
 ### Download APK / Versão Web
 
-📱 **[Download APK](https://github.com/SEU_USUARIO/AniData/releases/latest)**
+📱 **[Download APK](https://github.com/Eduarda-Borges-Silva/AniData/releases/latest)**
 
 🌐 **[Versão Web Flutter](https://anidata-flutter.web.app)**
 

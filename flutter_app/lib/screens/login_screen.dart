@@ -13,15 +13,26 @@ class _LoginScreenState extends State<LoginScreen> {
   String? _error;
 
   Future<void> _signInWithGoogle() async {
-    setState(() { _loading = true; _error = null; });
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
     try {
       final provider = GoogleAuthProvider();
       await FirebaseAuth.instance.signInWithPopup(provider);
-      if (mounted) Navigator.pushReplacementNamed(context, '/');
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, '/');
+      }
     } catch (e) {
-      setState(() { _error = 'Falha ao entrar com Google. Tente novamente.'; });
+      setState(() {
+        _error = 'Falha ao entrar com Google. Tente novamente.';
+      });
     } finally {
-      if (mounted) setState(() { _loading = false; });
+      if (mounted) {
+        setState(() {
+          _loading = false;
+        });
+      }
     }
   }
 

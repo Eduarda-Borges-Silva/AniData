@@ -1,8 +1,19 @@
+import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import styles from '../styles/Login.module.css';
 
 function Login() {
-  const { loginWithGoogle } = useAuth();
+  const { loginWithGoogle, isFirebaseConfigured } = useAuth();
+  const [error, setError] = useState('');
+
+  async function handleLogin() {
+    setError('');
+    try {
+      await loginWithGoogle();
+    } catch (err) {
+      setError(err?.message || 'Não foi possível entrar com Google.');
+    }
+  }
 
   return (
     <div className={styles.page}>
@@ -19,7 +30,12 @@ function Login() {
           </p>
         </div>
 
-        <button type="button" className={styles.googleButton} onClick={loginWithGoogle}>
+        <button
+          type="button"
+          className={styles.googleButton}
+          onClick={handleLogin}
+          disabled={!isFirebaseConfigured}
+        >
           <svg className={styles.googleIcon} viewBox="0 0 24 24" aria-hidden="true">
             <path
               fill="#4285F4"
@@ -40,6 +56,14 @@ function Login() {
           </svg>
           Entrar com Google
         </button>
+
+        {!isFirebaseConfigured && (
+          <p className={styles.error}>
+            Firebase não configurado. Preencha as variáveis VITE_FIREBASE_* para ativar o login.
+          </p>
+        )}
+
+        {error && <p className={styles.error}>{error}</p>}
 
         <p className={styles.disclaimer}>
           Ao entrar, você concorda com os termos de uso. Seus dados são armazenados de forma segura

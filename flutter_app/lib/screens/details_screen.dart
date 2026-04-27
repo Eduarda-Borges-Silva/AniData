@@ -71,7 +71,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
-                          const Color(0xFF0f0f12).withOpacity(0.9),
+                          const Color(0xFF0f0f12).withValues(alpha: 0.9),
                         ],
                       ),
                     ),
@@ -102,9 +102,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                         decoration: BoxDecoration(
-                          color: accentColor.withOpacity(0.15),
+                          color: accentColor.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: accentColor.withOpacity(0.4)),
+                          border: Border.all(color: accentColor.withValues(alpha: 0.4)),
                         ),
                         child: Text(
                           '★ $score',

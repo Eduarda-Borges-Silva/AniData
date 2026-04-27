@@ -90,6 +90,13 @@
   box-shadow: var(--shadow);
 }
 
+.googleButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .googleIcon {
   width: 20px;
   height: 20px;
@@ -102,4 +109,15 @@
   font-size: 0.78rem;
   color: var(--muted);
   line-height: 1.6;
+}
+
+.error {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  color: var(--danger);
+  font-size: 0.84rem;
+  line-height: 1.5;
 }
