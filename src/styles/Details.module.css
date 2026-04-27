@@ -279,9 +279,66 @@
   .panel,
   .skeletonPanel {
     grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 22px;
   }
 
   .stats {
     grid-template-columns: 1fr;
+  }
+
+  .cover,
+  .skeletonCover {
+    min-height: 360px;
+  }
+
+  .title {
+    font-size: clamp(1.9rem, 7vw, 2.7rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .panel,
+  .skeletonPanel {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .cover,
+  .skeletonCover {
+    min-height: 280px;
+    border-radius: 12px;
+  }
+
+  .favoriteRow {
+    padding: 12px 0;
+  }
+
+  .leadStats {
+    gap: 10px;
+  }
+
+  .scoreSpotlight,
+  .episodeSpotlight {
+    min-width: 0;
+    flex: 1;
+    padding: 14px;
+  }
+
+  .scoreValue {
+    font-size: 2rem;
+  }
+
+  .description {
+    line-height: 1.75;
+    font-size: 0.94rem;
+  }
+
+  .skeletonStats {
+    flex-direction: column;
+  }
+
+  .skeletonStat {
+    width: 100%;
   }
 }

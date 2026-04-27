@@ -185,7 +185,21 @@
     width: 100%;
   }
 
+  .inputRow button {
+    width: 100%;
+  }
+
   .filterRow {
     flex-direction: column;
+  }
+
+  .selectWrap,
+  .select {
+    width: 100%;
+  }
+
+  .chip {
+    padding: 8px 12px;
+    font-size: 0.82rem;
   }
 }

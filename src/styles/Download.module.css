@@ -128,3 +128,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}
