@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import { AuthProvider } from './contexts/AuthContext';
 import Details from './pages/Details';
+import Download from './pages/Download';
 import Favorites from './pages/Favorites';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -51,6 +52,7 @@ function App() {
             <Route path="/tendencias" element={<Trends />} />
             <Route path="/temporadas" element={<Seasons />} />
             <Route path="/favoritos" element={<Favorites />} />
+            <Route path="/download" element={<Download />} />
             <Route path="/anime/:id" element={<Details />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

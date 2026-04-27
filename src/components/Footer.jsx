@@ -17,6 +17,7 @@ function Footer() {
         <Link to="/tendencias" className={styles.navItem}>Tendências</Link>
         <Link to="/temporadas" className={styles.navItem}>Temporadas</Link>
         <Link to="/favoritos" className={styles.navItem}>Favoritos</Link>
+        <Link to="/download" className={styles.navItem}>Download App</Link>
       </nav>
 
       <div className={styles.metaBlock}>

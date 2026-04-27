@@ -50,6 +50,12 @@ function Header({ theme, onToggleTheme }) {
         >
           Favoritos
         </NavLink>
+        <NavLink
+          to="/download"
+          className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+        >
+          Download
+        </NavLink>
       </nav>
 
       <div className={styles.controls}>

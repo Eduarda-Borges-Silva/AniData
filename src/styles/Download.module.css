@@ -1,0 +1,130 @@
+.page {
+  display: grid;
+  gap: 24px;
+}
+
+.hero {
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid var(--line-soft);
+  background:
+    radial-gradient(circle at top right, rgba(195, 58, 63, 0.14), transparent 38%),
+    linear-gradient(135deg, var(--surface-2), var(--surface-5));
+  box-shadow: var(--shadow-strong);
+}
+
+.kicker {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.description {
+  margin: 0;
+  max-width: 65ch;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid var(--line-soft);
+  font-weight: 700;
+}
+
+.primaryButton {
+  border-color: transparent;
+  color: var(--invert-text);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  box-shadow: 0 10px 26px rgba(143, 29, 37, 0.24);
+}
+
+.primaryButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(143, 29, 37, 0.3);
+}
+
+.secondaryButton {
+  color: var(--text);
+  background: var(--surface-3);
+}
+
+.secondaryButton:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid var(--line-soft);
+  background: var(--surface-1);
+  box-shadow: var(--shadow);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.8vw, 1.6rem);
+  letter-spacing: -0.03em;
+}
+
+.steps,
+.notes {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.repoLink {
+  justify-self: start;
+  margin-top: 4px;
+  font-weight: 700;
+  color: var(--accent-strong);
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+.repoLink:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
