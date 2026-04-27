@@ -8,6 +8,13 @@ import {
 } from 'firebase/firestore';
 import { db, isFirebaseConfigured } from './firebase';
 
+function normalizeFavoritesError(error) {
+  if (error && typeof error === 'object' && error.code === 'permission-denied') {
+    return new Error('Sem permissao no Firestore. Verifique as regras de seguranca do projeto Firebase.');
+  }
+  return error;
+}
+
 function favoritesRef(userId) {
   if (!db) {
     throw new Error('Firestore não está disponível.');
@@ -17,27 +24,43 @@ function favoritesRef(userId) {
 
 export async function getFavoriteIds(userId) {
   if (!isFirebaseConfigured || !db) return [];
-  const snapshot = await getDocs(favoritesRef(userId));
-  return snapshot.docs.map((d) => Number(d.id));
+  try {
+    const snapshot = await getDocs(favoritesRef(userId));
+    return snapshot.docs.map((d) => Number(d.id));
+  } catch (error) {
+    throw normalizeFavoritesError(error);
+  }
 }
 
 export async function isFavorite(userId, animeId) {
   if (!isFirebaseConfigured || !db) return false;
-  const ref = doc(db, 'users', userId, 'favorites', String(animeId));
-  const snap = await getDoc(ref);
-  return snap.exists();
+  try {
+    const ref = doc(db, 'users', userId, 'favorites', String(animeId));
+    const snap = await getDoc(ref);
+    return snap.exists();
+  } catch (error) {
+    throw normalizeFavoritesError(error);
+  }
 }
 
 export async function addFavorite(userId, animeId) {
   if (!isFirebaseConfigured || !db) return;
-  const ref = doc(db, 'users', userId, 'favorites', String(animeId));
-  await setDoc(ref, { animeId, savedAt: Date.now() });
+  try {
+    const ref = doc(db, 'users', userId, 'favorites', String(animeId));
+    await setDoc(ref, { animeId, savedAt: Date.now() });
+  } catch (error) {
+    throw normalizeFavoritesError(error);
+  }
 }
 
 export async function removeFavorite(userId, animeId) {
   if (!isFirebaseConfigured || !db) return;
-  const ref = doc(db, 'users', userId, 'favorites', String(animeId));
-  await deleteDoc(ref);
+  try {
+    const ref = doc(db, 'users', userId, 'favorites', String(animeId));
+    await deleteDoc(ref);
+  } catch (error) {
+    throw normalizeFavoritesError(error);
+  }
 }
 
 export async function toggleFavorite(userId, animeId) {
