@@ -32,7 +32,7 @@ Disponível como **aplicação web (React)** e **app mobile (Flutter)**.
 
 ## Sobre o Projeto
 
-O **AniData** permite descobrir, buscar e salvar animes favoritos com dados consumidos em tempo real pela [API GraphQL do AniList](https://anilist.gitbook.io/anilist-apiv2-docs/). Os favoritos são sincronizados na nuvem via Firebase Firestore, com autenticação pelo Google.
+O **AniData** permite descobrir, buscar e salvar animes favoritos com dados consumidos em tempo real pela [API GraphQL do AniList](https://anilist.gitbook.io/anilist-apiv2-docs/). Os favoritos são sincronizados na nuvem via Firebase Firestore, com autenticação por e-mail e senha.
 
 ---
 
@@ -151,15 +151,9 @@ netlify deploy --prod --dir=dist
 
 ### Prints Web
 
-> ⚠️ *Substitua as imagens abaixo por prints reais da aplicação*
-
-| Página Inicial | Busca |
+| Web 1 | Web 2 |
 |---|---|
-| ![Home](docs/prints/web-home.png) | ![Busca](docs/prints/web-busca.png) |
-
-| Detalhes | Favoritos |
-|---|---|
-| ![Detalhes](docs/prints/web-detalhes.png) | ![Favoritos](docs/prints/web-favoritos.png) |
+| ![Web 1](docs/prints/web-1.png) | ![Web 2](docs/prints/web-2.png) |
 
 ### Acesso Online
 
@@ -293,15 +287,9 @@ flutter devices
 
 ### Prints Mobile
 
-> ⚠️ *Substitua as imagens abaixo por prints reais da aplicação*
-
-| Tela Inicial | Busca |
+| Mobile 1 | Mobile 2 |
 |---|---|
-| ![Home](docs/prints/mobile-home.png) | ![Busca](docs/prints/mobile-busca.png) |
-
-| Detalhes | Favoritos |
-|---|---|
-| ![Detalhes](docs/prints/mobile-detalhes.png) | ![Favoritos](docs/prints/mobile-favoritos.png) |
+| ![Mobile 1](docs/prints/mobile-1.png) | ![Mobile 2](docs/prints/mobile-2.png) |
 
 ### Download APK / Versão Web
 
@@ -319,7 +307,7 @@ Ambas as versões (web e mobile) compartilham o **mesmo projeto Firebase**:
 
 | Serviço | Uso |
 |---|---|
-| **Authentication** | Login/logout com conta Google |
+| **Authentication** | Login/logout com e-mail e senha |
 | **Firestore** | Favoritos em `users/{uid}/favorites/{animeId}` |
 
 **Estrutura do Firestore:**
