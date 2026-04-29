@@ -9,6 +9,8 @@ class AnimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final title = anime['title']['romaji'] ?? '';
     final cover = anime['coverImage']['large'] ?? '';
+    final animeId = anime['id'] as int?;
+    final mirrorCover = animeId != null ? 'https://img.anili.st/media/$animeId' : '';
     final colorHex = anime['coverImage']['color'] as String?;
     final accentColor = colorHex != null
         ? Color(int.parse(colorHex.replaceFirst('#', 'FF'), radix: 16))
@@ -45,7 +47,20 @@ class AnimeCard extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   cover.isNotEmpty
-                      ? Image.network(cover, fit: BoxFit.cover)
+                      ? Image.network(
+                          cover,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) {
+                            if (mirrorCover.isNotEmpty) {
+                              return Image.network(
+                                mirrorCover,
+                                fit: BoxFit.cover,
+                                errorBuilder: (_, __, ___) => _ImageFallback(accentColor: accentColor),
+                              );
+                            }
+                            return _ImageFallback(accentColor: accentColor);
+                          },
+                        )
                       : Container(color: const Color(0xFF2a2a35)),
                   if (score > 0)
                     Positioned(
@@ -102,6 +117,25 @@ class AnimeCard extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ImageFallback extends StatelessWidget {
+  final Color accentColor;
+  const _ImageFallback({required this.accentColor});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xFF2a2a35),
+      child: Center(
+        child: Icon(
+          Icons.broken_image_outlined,
+          color: accentColor.withValues(alpha: 0.85),
+          size: 30,
         ),
       ),
     );

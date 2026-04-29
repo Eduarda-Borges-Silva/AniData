@@ -3,6 +3,7 @@ import styles from '../styles/Download.module.css';
 const APK_URL = 'https://github.com/Eduarda-Borges-Silva/AniData/releases/latest';
 const WEB_URL = 'https://anidata-web.netlify.app';
 const REPO_URL = 'https://github.com/Eduarda-Borges-Silva/AniData';
+const FLUTLAB_URL = 'https://flutlab.io/editor/f807c3f2-945e-49d0-b0e5-c47ed507d9bf';
 
 function Download() {
   return (
@@ -20,6 +21,9 @@ function Download() {
           </a>
           <a href={WEB_URL} target="_blank" rel="noreferrer" className={styles.secondaryButton}>
             Abrir versão web
+          </a>
+          <a href={FLUTLAB_URL} target="_blank" rel="noreferrer" className={styles.secondaryButton}>
+            Testar no FlutLab
           </a>
         </div>
       </header>
@@ -39,7 +43,7 @@ function Download() {
           <h2 className={styles.cardTitle}>Informacoes importantes</h2>
           <ul className={styles.notes}>
             <li>Versao atualizada em cada novo release no GitHub.</li>
-            <li>Login com Google para sincronizar favoritos.</li>
+            <li>Login com e-mail e senha para sincronizar favoritos.</li>
             <li>Fonte de dados em tempo real via AniList API.</li>
           </ul>
           <a href={REPO_URL} target="_blank" rel="noreferrer" className={styles.repoLink}>

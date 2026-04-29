@@ -35,7 +35,7 @@ class AniDataApp extends StatelessWidget {
           foregroundColor: Colors.white,
           elevation: 0,
         ),
-        cardTheme: const CardTheme(
+        cardTheme: const CardThemeData(
           color: Color(0xFF1a1a22),
           elevation: 0,
         ),

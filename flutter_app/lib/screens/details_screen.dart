@@ -37,8 +37,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     final anime = widget.anime;
+    final animeId = anime['id'] as int?;
     final title = anime['title']['romaji'] ?? '';
     final cover = (anime['coverImage']['extraLarge'] ?? anime['coverImage']['large'] ?? '') as String;
+    final mirrorCover = animeId != null ? 'https://img.anili.st/media/$animeId' : '';
     final score = anime['averageScore'] as int? ?? 0;
     final desc = (anime['description'] as String? ?? '').replaceAll(RegExp(r'<[^>]*>'), '');
     final genres = (anime['genres'] as List<dynamic>?)?.cast<String>() ?? [];
@@ -61,7 +63,38 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 fit: StackFit.expand,
                 children: [
                   if (cover.isNotEmpty)
-                    Image.network(cover, fit: BoxFit.cover)
+                    Image.network(
+                      cover,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) {
+                        if (mirrorCover.isNotEmpty) {
+                          return Image.network(
+                            mirrorCover,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) => Container(
+                              color: const Color(0xFF1a1a22),
+                              child: const Center(
+                                child: Icon(
+                                  Icons.broken_image_outlined,
+                                  color: Color(0xFF888899),
+                                  size: 38,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        return Container(
+                          color: const Color(0xFF1a1a22),
+                          child: const Center(
+                            child: Icon(
+                              Icons.broken_image_outlined,
+                              color: Color(0xFF888899),
+                              size: 38,
+                            ),
+                          ),
+                        );
+                      },
+                    )
                   else
                     Container(color: const Color(0xFF1a1a22)),
                   Container(

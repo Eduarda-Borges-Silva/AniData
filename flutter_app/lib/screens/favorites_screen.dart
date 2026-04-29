@@ -84,7 +84,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
-                      child: const Text('Entrar com Google'),
+                      child: const Text('Entrar'),
                     ),
                   ],
                 ),
