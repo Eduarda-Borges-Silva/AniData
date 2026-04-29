@@ -157,9 +157,7 @@ netlify deploy --prod --dir=dist
 
 ### Acesso Online
 
-🌐 **[Netlify — seu-site.netlify.app](https://seu-site.netlify.app)**
-
-> ⚠️ *Atualize com o link real após o deploy no Netlify*
+🌐 **[Netlify — starlit-creponne-3f893d.netlify.app](https://starlit-creponne-3f893d.netlify.app/)**
 
 ---
 
@@ -296,8 +294,6 @@ flutter devices
 📱 **[Download APK](https://github.com/Eduarda-Borges-Silva/AniData/releases/latest)**
 
 🌐 **[Versão Web Flutter](https://anidata-flutter.web.app)**
-
-> ⚠️ *Substitua pelos links reais após publicar*
 
 ---
 
